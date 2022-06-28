@@ -1,0 +1,37 @@
+CHIP MultiplierUnsigned {
+    IN x[8], y[8];
+    OUT of, z[8];
+
+    PARTS:
+
+    /*get partial products*/
+    PartialProduct0(x = x, y = y[0], z = pp0);
+    PartialProduct1(x = x, y = y[1], z = pp1);
+    PartialProduct2(x = x, y = y[2], z = pp2);
+    PartialProduct3(x = x, y = y[3], z = pp3);
+    PartialProduct4(x = x, y = y[4], z = pp4);
+    PartialProduct5(x = x, y = y[5], z = pp5);
+    PartialProduct6(x = x, y = y[6], z = pp6);
+    PartialProduct7(x = x, y = y[7], z = pp7);
+
+    /*Level 0 addition*/
+    Reducer3to2(p0 = pp0, p1 = pp1, p2 = pp2, of = of0, c = c10, s = s10);
+    Reducer3to2(p0 = pp3, p1 = pp4, p2 = pp5, of = of1, c = c11, s = s11);
+
+    /*Level 1 addition*/
+    Reducer3to2(p0 = c10, p1 = s10, p2 = c11, of = of2, c = c20, s = s20);
+    Reducer3to2(p0 = s11, p1 = pp6, p2 = pp7, of = of3, c = c21, s = s21);
+
+    /*Level 2 addition*/
+    Reducer3to2(p0 = c20, p1 = s20, p2 = c21, of = of4, c = c30, s = s30);
+    Reducer3to2(p0 = c30, p1 = s30, p2 = s21, of = of5, c = c40, s = s40);
+
+    /*Level 3 Addition, final answer, raw form*/
+    CLA16(x = c40, y = s40, of = of6, z = a);
+
+    /*represent right half of answer*/
+    Answer(a = a, b = z);
+
+    /*check if answer is bigger than expected*/
+    OverFlow(a = a, of = of);
+}

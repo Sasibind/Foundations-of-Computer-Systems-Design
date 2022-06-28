@@ -1,0 +1,21 @@
+CHIP Adder {
+
+    /*this is addition chip for op code 100 based on fulladder*/
+
+    IN x[8], y[8], s;
+    OUT  z[8];
+
+    PARTS:
+    Xor(a = x[0], b = x[0], out = c0);
+
+    FullAdder(c0 = c0, x = x[0], y = y[0], c1 = c1, z = z[0]);
+    FullAdder(c0 = c1, x = x[1], y = y[1], c1 = c2, z = z[1]);
+    FullAdder(c0 = c2, x = x[2], y = y[2], c1 = c3, z = z[2]);
+    FullAdder(c0 = c3, x = x[3], y = y[3], c1 = c4, z = z[3]);
+    FullAdder(c0 = c4, x = x[4], y = y[4], c1 = c5, z = z[4]);
+    FullAdder(c0 = c5, x = x[5], y = y[5], c1 = c6, z = z[5]);
+    FullAdder(c0 = c6, x = x[6], y = y[6], c1 = c7, z = z[6]);
+    FullAdder(c0 = c7, x = x[7], y = y[7], c1 = c8, z = z[7]);
+
+
+}

@@ -1,0 +1,15 @@
+/*Even Parity Generator: p = a xor b xor x xor ... xor h*/
+
+CHIP EvenParityGen8 {
+    IN a, b, c, d, e, f, g, h;
+    OUT p;
+
+    PARTS:
+    Xor(a = a, b = b, out = i);
+    Xor(a = c, b = d, out = j);
+    Xor(a = e, b = f, out = k);
+    Xor(a = g, b = h, out = l);
+    Xor(a = i, b = j, out = m);
+    Xor(a = k, b = l, out = n);
+    Xor(a = m, b = n, out = p);
+}

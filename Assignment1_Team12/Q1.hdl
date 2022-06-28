@@ -1,0 +1,21 @@
+/*
+  The MSOP of the given function = not(X).(W xor Z) + Y.Z + X.not(Z)
+*/
+
+CHIP Q1 {
+    IN w, x, y, z;
+    OUT out;
+
+    PARTS:
+    Not(in = w, out = notw);
+    Not(in = x, out = notx);
+    Not(in = z, out = notz);
+    And(a = w, b = notz, out = wnotz);
+    And(a = z, b = notw, out = znotw);
+    Or(a = wnotz, b = znotw, out = zxorw);
+    And(a = notx, b = zxorw, out = out1);
+    And(a = y, b = z, out = out2);
+    And(a = x, b = notz, out = out3);
+    Or(a = out2, b = out3, out = out4);
+    Or(a = out1, b = out4, out = out);
+}

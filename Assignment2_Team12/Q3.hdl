@@ -1,0 +1,13 @@
+CHIP Q3 {
+    IN x1, x0, s2, s1, s0;
+    OUT y01, y00, y11, y10, y21, y20, y31, y30, y41, y40, y51, y50, y61, y60, y71, y70;
+    
+    PARTS:
+    DMux2(in1 = x1, in0 = x0, sel = s2, a1 = a1, a0 = a0, b1 = b1, b0 = b0);
+    DMux2(in1 = a1, in0 = a0, sel = s1, a1 = c1, a0 = c0, b1 = d1, b0 = d0);
+    DMux2(in1 = b1, in0 = b0, sel = s1, a1 = e1, a0 = e0, b1 = f1, b0 = f0);
+    DMux2(in1 = c1, in0 = c0, sel = s0, a1 = y01, a0 = y00, b1 = y11, b0 = y10);
+    DMux2(in1 = d1, in0 = d0, sel = s0, a1 = y21, a0 = y20, b1 = y31, b0 = y30);
+    DMux2(in1 = e1, in0 = e0, sel = s0, a1 = y41, a0 = y40, b1 = y51, b0 = y50);
+    DMux2(in1 = f1, in0 = f0, sel = s0, a1 = y61, a0 = y60, b1 = y71, b0 = y70);
+}

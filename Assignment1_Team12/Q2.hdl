@@ -1,0 +1,22 @@
+CHIP Q2 {
+    IN x0, x1, x2, x3;
+    OUT y1, y0;
+
+    PARTS:
+    Not(in = x0, out = notx0);
+    Not(in = x1, out = notx1);
+    Not(in = x2, out = notx2);
+    Not(in = x3, out = notx3);
+    And(a = notx0, b = notx1, out = c1);
+    And(a = x2, b = notx3, out = c2);
+    And(a = x3, b = notx2, out = c3);
+    And(a = c1, b = c2, out = d1);
+    And(a = c1, b = c3, out = d2);
+    Or(a = d1, b = d2, out = y1);
+    And(a = notx0, b = notx2, out = e1);
+    And(a = x1, b = notx3, out = e2);
+    And(a = x3, b = notx1, out = e3);
+    And(a = e1, b = e2, out = f1);
+    And(a = e1, b = e3, out = f2);
+    Or(a = f1, b = f2, out = y0);
+}

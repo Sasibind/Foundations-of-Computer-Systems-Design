@@ -1,0 +1,21 @@
+CHIP Q5 {
+    IN y2, y1, y0;
+    OUT x0, x1, x2, x3, x4, x5, x6, x7;
+
+    PARTS:
+    Not(in = y0, out = noty0);
+    Not(in = y1, out = noty1);
+    Not(in = y2, out = noty2);
+    And(a = noty2, b = noty1, out = d1);
+    And(a = noty2, b = y1, out = d2);
+    And(a = y2, b = noty1, out = d3);
+    And(a = y2, b = y1, out = d4);
+    And(a = d1, b = noty0, out = x0);
+    And(a = d1, b = y0, out = x1);
+    And(a = d2, b = noty0, out = x2);
+    And(a = d2, b = y0, out = x3);
+    And(a = d3, b = noty0, out = x4);
+    And(a = d3, b = y0, out = x5);
+    And(a = d4, b = noty0, out = x6);
+    And(a = d4, b = y0, out = x7);
+}

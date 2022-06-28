@@ -1,0 +1,12 @@
+CHIP Enc4Way {
+    IN r0, r1, r2, r3;
+    OUT s1, s0;
+
+    PARTS:
+    Not(in = r0, out = notr0);
+    Not(in = r1, out = notr1);
+    Not(in = r2, out = notr2);
+    And(a = notr0, b = notr1, out = s1);
+    Or(a = notr2, b = r1, out = c1);
+    And(a = notr0, b = c1, out = s0);
+}

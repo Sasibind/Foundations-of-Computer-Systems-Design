@@ -1,0 +1,27 @@
+CHIP Q2s {
+    IN s, x[16], y[16];
+    OUT overflow, z[16];
+
+    PARTS:
+    Xor(a = y[0], b = s, out = w0);
+    Xor(a = y[1], b = s, out = w1);
+    Xor(a = y[2], b = s, out = w2);
+    Xor(a = y[3], b = s, out = w3);
+    Xor(a = y[4], b = s, out = w4);
+    Xor(a = y[5], b = s, out = w5);
+    Xor(a = y[6], b = s, out = w6);
+    Xor(a = y[7], b = s, out = w7);
+    Xor(a = y[8], b = s, out = w8);
+    Xor(a = y[9], b = s, out = w9);
+    Xor(a = y[10], b = s, out = w10);
+    Xor(a = y[11], b = s, out = w11);
+    Xor(a = y[12], b = s, out = w12);
+    Xor(a = y[13], b = s, out = w13);
+    Xor(a = y[14], b = s, out = w14);
+    Xor(a = y[15], b = s, out = w15);
+
+    CLA(c0 = s, x = x[0..3], y3 = w3, y2 = w2, y1 = w1, y0 = w0, c4 = c4, z = z[0..3]);
+    CLA(c0 = c4, x = x[4..7], y3 = w7, y2 = w6, y1 = w5, y0 = w4, c4 = c8, z = z[4..7]);
+    CLA(c0 = c8, x = x[8..11], y3 = w11, y2 = w10, y1 = w9, y0 = w8, c4 = c12, z = z[8..11]);
+    CLA(c0 = c12, x = x[12..15], y3 = w15, y2 = w14, y1 = w13, y0 = w12, c4 = overflow, z = z[12..15]);
+}

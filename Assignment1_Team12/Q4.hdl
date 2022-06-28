@@ -1,0 +1,12 @@
+CHIP Q4 {
+    IN y1, y0;
+    OUT x0, x1, x2, x3;
+
+    PARTS:
+    Not(in = y1, out = noty1);
+    Not(in = y0, out = noty0);
+    And(a = noty1, b = noty0, out = x0);
+    And(a = noty1, b = y0, out = x1);
+    And(a = y1, b = noty0, out = x2);
+    And(a = y1, b = y0, out = x3);
+}

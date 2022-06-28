@@ -1,0 +1,19 @@
+CHIP Answer {
+
+    /*give only right half of the product, which is Answer*/
+
+    IN a[16];
+    OUT b[8];
+
+    PARTS:
+
+    And(a=a[0],b=a[0],out=b[0]);
+    And(a=a[1],b=a[1],out=b[1]);
+    And(a=a[2],b=a[2],out=b[2]);
+    And(a=a[3],b=a[3],out=b[3]);
+    And(a=a[4],b=a[4],out=b[4]);
+    And(a=a[5],b=a[5],out=b[5]);
+    And(a=a[6],b=a[6],out=b[6]);
+    And(a=a[7],b=a[7],out=b[7]);
+
+}

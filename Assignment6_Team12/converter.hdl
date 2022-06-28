@@ -1,0 +1,7 @@
+CHIP converter{
+    IN a[16];
+    OUT a15;
+
+    PARTS:
+    Or(a=a[15], b=a[15], out=a15);
+}

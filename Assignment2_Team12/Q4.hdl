@@ -1,0 +1,22 @@
+CHIP Q4 {
+    IN a7,a6,a5,a4,a3,a2,a1,a0,b7,b6,b5,b4,b3,b2,b1,b0;
+
+    OUT out;
+
+    PARTS:
+    XNor(a=a7,b=b7,out=x7);
+    XNor(a=a6,b=b6,out=x6);
+    XNor(a=a5,b=b5,out=x5);
+    XNor(a=a4,b=b4,out=x4);
+    XNor(a=a3,b=b3,out=x3);
+    XNor(a=a2,b=b2,out=x2);
+    XNor(a=a1,b=b1,out=x1);
+    XNor(a=a0,b=b0,out=x0);
+    And(a=x7,b=x6,out=c0);
+    And(a=x5,b=x4,out=c1);
+    And(a=x3,b=x2,out=c2);
+    And(a=x1,b=x0,out=c3);
+    And(a=c1,b=c2,out=d0);
+    And(a=c0,b=c3,out=d1);
+    And(a=d0,b=d1,out=out);
+}

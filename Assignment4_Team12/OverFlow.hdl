@@ -1,0 +1,14 @@
+CHIP OverFlow {
+    IN a[16];
+    OUT of;
+
+    PARTS:
+    /*check if the product is bigger than expected*/
+    Or(a = a[8], b = a[9], out = b1);
+    Or(a = a[10], b = a[11], out = b2);
+    Or(a = a[12], b = a[13], out = b3);
+    Or(a = a[14], b = a[15], out = b4);
+    Or(a = b1, b = b2, out = c1);
+    Or(a = b3, b = b4, out = c2);
+    Or(a = c1, b = c2, out = of);
+}

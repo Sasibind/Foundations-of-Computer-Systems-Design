@@ -1,0 +1,12 @@
+CHIP FullAdder {
+    IN c0, x, y;
+    OUT c1, z;
+
+    PARTS:
+    Xor(a = x, b = y, out = d1);
+    Xor(a = d1, b = c0, out = z);
+    And(a = x, b = y, out = d2);
+    Or(a = x, b = y, out = d3);
+    And(a = d3, b = c0, out = d4);
+    Or(a = d2, b = d4, out = c1);
+}

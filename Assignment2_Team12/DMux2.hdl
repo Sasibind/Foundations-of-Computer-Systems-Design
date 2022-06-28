@@ -1,0 +1,8 @@
+CHIP DMux2 {
+    IN in1, in0, sel;
+    OUT a1, a0, b1, b0;
+
+    PARTS:
+    DMux(in = in1, sel = sel, a = a1, b = b1);
+    DMux(in = in0, sel = sel, a = a0, b = b0);
+}

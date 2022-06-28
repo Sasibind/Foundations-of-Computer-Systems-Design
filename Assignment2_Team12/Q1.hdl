@@ -1,0 +1,26 @@
+CHIP Q1 {
+    IN s1,s0,x01,x00,x11,x10,x21,x20,x31,x30;
+    OUT y1,y0;
+
+    PARTS:
+    Not(in=s1,out=nots1);
+    Not(in=s0,out=nots0);
+    And(a=nots1,b=nots0,out=c0);
+    And(a=nots1,b=s0,out=c1);
+    And(a=s1,b=nots0,out=c2);
+    And(a=s1,b=s0,out=c3);
+    And(a=c0,b=x01,out=d0);
+    And(a=c1,b=x11,out=d1);
+    And(a=c2,b=x21,out=d2);
+    And(a=c3,b=x31,out=d3);
+    Or(a=d0,b=d1,out=e0);
+    Or(a=d2,b=d3,out=e1);
+    Or(a=e0,b=e1,out=y1);
+    And(a=c0,b=x00,out=f0);
+    And(a=c1,b=x10,out=f1);
+    And(a=c2,b=x20,out=f2);
+    And(a=c3,b=x30,out=f3);
+    Or(a=f0,b=f1,out=g0);
+    Or(a=f2,b=f3,out=g1);
+    Or(a=g0,b=g1,out=y0);
+}

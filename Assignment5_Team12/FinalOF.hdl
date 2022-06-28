@@ -1,0 +1,22 @@
+CHIP FinalOF{
+
+    /*this is overflow for whole circuit (ALU)*/
+
+    IN x[8],y[8],s0,s1,s2,s;
+    OUT of;
+
+    PARTS:
+
+    Xor(a=s , b=s , out=zero);
+
+   /*these are invoked to give inputs  to mux*/
+
+    AdderOF(x=x , y=y , s=s , ofadder= of1);
+    SubractorOF(x=x , y=y , s=s , ofsub=of2);
+
+    OverFlow(x=x , y=y , of=of3);
+    OverFlowSigned(x=x , y=y , of=of4);
+
+    Mux4Way1(a=of1 , b=of2 , c=of3 , d=of4 , c0=s0 , c1=s1 , z=z1);
+    Mux2Way1(a=zero , b=z1 , c2=s2 , z=of);
+}

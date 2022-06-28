@@ -1,0 +1,24 @@
+CHIP ALU {
+    IN x[8], y[8], s, op[3];
+    OUT z[8] , of, eq;
+
+    PARTS:
+    
+    /*invoked to give inputs to multipluxer*/
+
+    Nop(a = x, b = y, out = a);
+    And8(a = x, b = y, out = b);
+    Or8(a = x, b = y, out = c);
+    Xor8(a = x, b = y, out = d);
+    Adder(x = x, y = y, s = op[0], z = e);
+    Subtractor(x = x, y = y, s = op[0], z = f);
+    MultiplierUnsigned(x = x, y = y, z = g);
+    MultiplierSigned(x = x, y = y,  z = h);
+
+    Mux8(a=a , b=b , c=c , d=d , e=e , f=f , g=g , h=h , c2=op[2] , c1=op[1] , c0=op[0] , z=z );
+
+    FinalOF(x=x , y=y , s0=op[0] , s1=op[1] , s2=op[2] , s=s , of=of );
+
+    Equalbit(x=x, y=y, s=eq);
+
+}

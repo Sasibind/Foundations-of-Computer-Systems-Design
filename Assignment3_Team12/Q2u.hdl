@@ -1,0 +1,108 @@
+CHIP Q2u {
+    IN x[16], y[16], s;
+    OUT overflow, z[16];
+
+    PARTS:
+    Xor(a = y[0], b = s, out = w0);
+    Xor(a = y[1], b = s, out = w1);
+    Xor(a = y[2], b = s, out = w2);
+    Xor(a = y[3], b = s, out = w3);
+    Xor(a = y[4], b = s, out = w4);
+    Xor(a = y[5], b = s, out = w5);
+    Xor(a = y[6], b = s, out = w6);
+    Xor(a = y[7], b = s, out = w7);
+    Xor(a = y[8], b = s, out = w8);
+    Xor(a = y[9], b = s, out = w9);
+    Xor(a = y[10], b = s, out = w10);
+    Xor(a = y[11], b = s, out = w11);
+    Xor(a = y[12], b = s, out = w12);
+    Xor(a = y[13], b = s, out = w13);
+    Xor(a = y[14], b = s, out = w14);
+    Xor(a = y[15], b = s, out = w15);
+
+    Xor(a = x[0], b = w0, out = p0);
+    And(a = x[0], b = w0, out = g0);
+    And(a = p0, b = s, out = d0);
+    Or(a = d0, b = g0, out = c1);
+    Xor(a = p0, b = s, out = z[0]);
+    Xor(a = x[1], b = w1, out = p1);
+    And(a = x[1], b = w1, out = g1);
+    And(a = p1, b = c1, out = d1);
+    Or(a = d1, b = g1, out = c2);
+    Xor(a = p1, b = c1, out = z[1]);
+    Xor(a = x[2], b = w2, out = p2);
+    And(a = x[2], b = w2, out = g2);
+    And(a = p2, b = c2, out = d2);
+    Or(a = d2, b = g2, out = c3);
+    Xor(a = p2, b = c2, out = z[2]);
+    Xor(a = x[3], b = w3, out = p3);
+    And(a = x[3], b = w3, out = g3);
+    And(a = p3, b = c3, out = d3);
+    Or(a = d3, b = g3, out = c4);
+    Xor(a = p3, b = c3, out = z[3]);
+
+    Xor(a = x[4], b = w4, out = p4);
+    And(a = x[4], b = w4, out = g4);
+    And(a = p4, b = c4, out = d4);
+    Or(a = d4, b = g4, out = c5);
+    Xor(a = p4, b = c4, out = z[4]);
+    Xor(a = x[5], b = w5, out = p5);
+    And(a = x[5], b = w5, out = g5);
+    And(a = p5, b = c5, out = d5);
+    Or(a = d5, b = g5, out = c6);
+    Xor(a = p5, b = c5, out = z[5]);
+    Xor(a = x[6], b = w6, out = p6);
+    And(a = x[6], b = w6, out = g6);
+    And(a = p6, b = c6, out = d6);
+    Or(a = d6, b = g6, out = c7);
+    Xor(a = p6, b = c6, out = z[6]);
+    Xor(a = x[7], b = w7, out = p7);
+    And(a = x[7], b = w7, out = g7);
+    And(a = p7, b = c7, out = d7);
+    Or(a = d7, b = g7, out = c8);
+    Xor(a = p7, b = c7, out = z[7]);
+    
+    Xor(a = x[8], b = w8, out = p8);
+    And(a = x[8], b = w8, out = g8);
+    And(a = p8, b = c8, out = d8);
+    Or(a = d8, b = g8, out = c9);
+    Xor(a = p8, b = c8, out = z[8]);
+    Xor(a = x[9], b = w9, out = p9);
+    And(a = x[9], b = w9, out = g9);
+    And(a = p9, b = c9, out = d9);
+    Or(a = d9, b = g9, out = c10);
+    Xor(a = p9, b = c9, out = z[9]);
+    Xor(a = x[10], b = w10, out = p10);
+    And(a = x[10], b = w10, out = g10);
+    And(a = p10, b = c10, out = d10);
+    Or(a = d10, b = g10, out = c11);
+    Xor(a = p10, b = c10, out = z[10]);
+    Xor(a = x[11], b = w11, out = p11);
+    And(a = x[11], b = w11, out = g11);
+    And(a = p11, b = c11, out = d11);
+    Or(a = d11, b = g11, out = c12);
+    Xor(a = p11, b = c11, out = z[11]);
+    
+    Xor(a = x[12], b = w12, out = p12);
+    And(a = x[12], b = w12, out = g12);
+    And(a = p12, b = c12, out = d12);
+    Or(a = d12, b = g12, out = c13);
+    Xor(a = p12, b = c12, out = z[12]);
+    Xor(a = x[1], b = w1, out = p13);
+    And(a = x[1], b = w1, out = g13);
+    And(a = p13, b = c13, out = d13);
+    Or(a = d13, b = g13, out = c14);
+    Xor(a = p13, b = c13, out = z[13]);
+    Xor(a = x[14], b = w14, out = p14);
+    And(a = x[14], b = w14, out = g14);
+    And(a = p14, b = c14, out = d14);
+    Or(a = d14, b = g14, out = c15);
+    Xor(a = p14, b = c14, out = z[14]);
+    Xor(a = x[15], b = w15, out = p15);
+    And(a = x[15], b = w15, out = g15);
+    And(a = p15, b = c15, out = d15);
+    Or(a = d15, b = g15, out = c16);
+    Xor(a = p15, b = c15, out = z[15]);
+
+    Xor(a = s, b = c16, out = overflow);
+}
