@@ -1,0 +1,22 @@
+CHIP Xor16N1 {
+    IN a[16], na; // basically this chip will give the complement of a if na is 1, uses 16 xor gates
+    OUT out[16];
+
+    PARTS:
+    Xor(a=a[0], b=na, out=out[0]);
+    Xor(a=a[1], b=na, out=out[1]);
+    Xor(a=a[2], b=na, out=out[2]);
+    Xor(a=a[3], b=na, out=out[3]);
+    Xor(a=a[4], b=na, out=out[4]);
+    Xor(a=a[5], b=na, out=out[5]);
+    Xor(a=a[6], b=na, out=out[6]);
+    Xor(a=a[7], b=na, out=out[7]);
+    Xor(a=a[8], b=na, out=out[8]);
+    Xor(a=a[9], b=na, out=out[9]);
+    Xor(a=a[10], b=na, out=out[10]);
+    Xor(a=a[11], b=na, out=out[11]);
+    Xor(a=a[12], b=na, out=out[12]);
+    Xor(a=a[13], b=na, out=out[13]);
+    Xor(a=a[14], b=na, out=out[14]);
+    Xor(a=a[15], b=na, out=out[15]);
+}

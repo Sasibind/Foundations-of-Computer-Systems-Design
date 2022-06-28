@@ -1,0 +1,20 @@
+CHIP ALU {
+    IN x[16], y[16], zx, zy, nx, ny, f, n0;
+    OUT out[16], zr, ng;
+
+    PARTS:
+    /*zero */
+    Xor(a=zx, b=zx, out=zero0);
+    CreateZero(a = zx, zero = zero);
+
+    Mux16(sel=zx, a=x, b=zero, out=x1); // decide if x is nonzero
+    Mux16(sel=zy, a=y, b=zero, out=y1); // decide if y is nonzero
+    Xor16N1(a=x1, na=nx, out=p); // either x or its complement
+    Xor16N1(a=y1, na=ny, out=q); // either y or its complement
+    And16(a=p, b=q, out=pandq); // 16 bit and
+    Add16(a=p, b=q, out=pplusq); // 16 bit adder
+    Mux16(sel=f, a=pandq, b=pplusq, out=r); // select and or add
+    Xor16N1(a=r, na=n0, out=out); // final answer
+    IsZero(r=r, n0=n0, zero=zero0, zr=zr); // is it zero?
+    IsNegative(r=r, n0=n0, ng=ng); // is it negative?
+}

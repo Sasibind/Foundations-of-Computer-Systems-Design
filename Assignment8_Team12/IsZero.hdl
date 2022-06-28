@@ -1,0 +1,62 @@
+CHIP IsZero {
+    IN r[16], n0, zero; // decide if the answer is zero, by checking each bit
+    OUT zr;
+
+    PARTS:
+    
+    //first generate answer
+    Xor(a=r[0], b=n0, out=z0);
+    Xor(a=r[1], b=n0, out=z1);
+    Xor(a=r[2], b=n0, out=z2);
+    Xor(a=r[3], b=n0, out=z3);
+    Xor(a=r[4], b=n0, out=z4);
+    Xor(a=r[5], b=n0, out=z5);
+    Xor(a=r[6], b=n0, out=z6);
+    Xor(a=r[7], b=n0, out=z7);
+    Xor(a=r[8], b=n0, out=z8);
+    Xor(a=r[9], b=n0, out=z9);
+    Xor(a=r[10], b=n0, out=z10);
+    Xor(a=r[11], b=n0, out=z11);
+    Xor(a=r[12], b=n0, out=z12);
+    Xor(a=r[13], b=n0, out=z13);
+    Xor(a=r[14], b=n0, out=z14);
+    Xor(a=r[15], b=n0, out=z15);
+
+    //then use nor gates to create check bits, they will be all 1 if each bit in answer is 0
+    Nor(a=z0, b=zero, out=c0);
+    Nor(a=z1, b=zero, out=c1);
+    Nor(a=z2, b=zero, out=c2);
+    Nor(a=z3, b=zero, out=c3);
+    Nor(a=z4, b=zero, out=c4);
+    Nor(a=z5, b=zero, out=c5);
+    Nor(a=z6, b=zero, out=c6);
+    Nor(a=z7, b=zero, out=c7);
+    Nor(a=z8, b=zero, out=c8);
+    Nor(a=z9, b=zero, out=c9);
+    Nor(a=z10, b=zero, out=c10);
+    Nor(a=z11, b=zero, out=c11);
+    Nor(a=z12, b=zero, out=c12);
+    Nor(a=z13, b=zero, out=c13);
+    Nor(a=z14, b=zero, out=c14);
+    Nor(a=z15, b=zero, out=c15);
+
+    // one check bit being 0 means zr cannot be 1 
+    And(a=c0, b=c1, out=d0);
+    And(a=c2, b=c3, out=d1);
+    And(a=c4, b=c5, out=d2);
+    And(a=c6, b=c7, out=d3);
+    And(a=c8, b=c9, out=d4);
+    And(a=c10, b=c11, out=d5);
+    And(a=c12, b=c13, out=d6);
+    And(a=c14, b=c15, out=d7);
+
+    And(a=d0, b=d1, out=e0);
+    And(a=d2, b=d3, out=e1);
+    And(a=d4, b=d5, out=e2);
+    And(a=d6, b=d7, out=e3);
+    
+    And(a=e0, b=e1, out=f1);
+    And(a=e1, b=e2, out=f2);
+
+    And(a=f1, b=f2, out=zr);
+}

@@ -1,0 +1,22 @@
+CHIP CreateZero{
+    IN a;
+    OUT zero[16];
+
+    PARTS:
+    Xor(a=a,b=a,out=zero[0]);
+    Xor(a=a,b=a,out=zero[1]);
+    Xor(a=a,b=a,out=zero[2]);
+    Xor(a=a,b=a,out=zero[3]);
+    Xor(a=a,b=a,out=zero[4]);
+    Xor(a=a,b=a,out=zero[5]);
+    Xor(a=a,b=a,out=zero[6]);
+    Xor(a=a,b=a,out=zero[7]);
+    Xor(a=a,b=a,out=zero[8]);
+    Xor(a=a,b=a,out=zero[9]);
+    Xor(a=a,b=a,out=zero[10]);
+    Xor(a=a,b=a,out=zero[11]);
+    Xor(a=a,b=a,out=zero[12]);
+    Xor(a=a,b=a,out=zero[13]);
+    Xor(a=a,b=a,out=zero[14]);
+    Xor(a=a,b=a,out=zero[15]);
+}

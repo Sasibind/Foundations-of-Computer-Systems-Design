@@ -1,0 +1,8 @@
+CHIP IsNegative{
+    IN r[16],n0; // decide if the answer is negative, by looking at the leftmost place
+    OUT ng;
+
+    PARTS:
+
+    Xor(a=r[15], b=n0, out=ng);
+}

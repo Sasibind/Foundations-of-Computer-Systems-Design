@@ -1,0 +1,8 @@
+CHIP Nor{
+    IN a,b; // single bit nor chip for the iszero chip
+    OUT out;
+
+    PARTS:
+    Or(a=a, b=b, out=z);
+    Not(in=z, out=out);
+}
